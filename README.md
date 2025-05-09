@@ -1,15 +1,13 @@
-# 7-Wonders-of-the-world
 # 🌍 7 Wonders of the World – Interactive Web App
 
 **Интерактивный веб‑проект о 7 чудесах света с возможностью добавления пользовательских "чудес", 3D‑глобусом, модерацией и геопоиском.**
 
-![screenshot](https://your-screenshot-url.com/preview.png)
 
 ---
 
 ## ✨ Особенности
 
-- 🗺️ **3D-глобус** с официальными чудесами (CesiumJS или react-globe.gl)
+- 🗺️ **3D-глобус** с официальными чудесами (CesiumJS)
 - 🏛️ Просмотр подробной информации, фото и интересных фактов
 - ➕ **Добавление своих "чудес"** через форму
 - 🔐 JWT‑авторизация и личный кабинет
@@ -26,7 +24,7 @@
 ### Frontend:
 - [React](https://reactjs.org/) + [Redux](https://redux.js.org/) / Context API
 - [Axios](https://axios-http.com/) – запросы к API
-- [react-globe.gl](https://github.com/vasturiano/react-globe.gl) или [CesiumJS](https://cesium.com/)
+- [CesiumJS](https://cesium.com/)
 - [React Router](https://reactrouter.com/) – маршрутизация
 
 ### Backend:

@@ -1,0 +1,228 @@
+/* src/components/LoginRegister.css */
+
+/* — Мистический анимированный фон с дополнительными эффектами — */
+.auth-page {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    overflow: hidden;
+}
+
+/* Пульсирующий цветовой туман с анимацией hue-rotate */
+.auth-page::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center,
+    rgba(50, 0, 100, 0.6) 0%,
+    rgba(0, 0, 0, 0.9) 80%);
+    filter: brightness(0.8) saturate(1.2) hue-rotate(0deg);
+    animation:
+            bgPulse 10s ease-in-out infinite alternate,
+            bgHue 30s linear infinite;
+    z-index: -2;
+}
+@keyframes bgPulse {
+    0%   { transform: scale(1)    translate(0,   0); }
+    50%  { transform: scale(1.1)  translate(5%,  5%); }
+    100% { transform: scale(1)    translate(0,   0); }
+}
+@keyframes bgHue {
+    0%   { filter: brightness(0.8) saturate(1.2) hue-rotate(0deg);   }
+    50%  { filter: brightness(0.8) saturate(1.2) hue-rotate(180deg); }
+    100% { filter: brightness(0.8) saturate(1.2) hue-rotate(360deg); }
+}
+
+/* Звёздная пыль, мерцающая и дрейфующая */
+.auth-page::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGD4DwABBAEAQp5YEQAAAABJRU5ErkJggg==')
+    repeat;
+    opacity: 0.12;
+    animation:
+            driftStars 30s linear infinite,
+            starTwinkle 5s ease-in-out infinite alternate;
+    z-index: -1;
+}
+@keyframes driftStars {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-200px, 200px); }
+}
+@keyframes starTwinkle {
+    0%   { opacity: 0.05; }
+    50%  { opacity: 0.2; }
+    100% { opacity: 0.05; }
+}
+
+/* — Карточка формы с динамическим сиянием за ней — */
+.auth-container {
+    position: relative;
+    z-index: 1;
+    width: 360px;
+    padding: 40px 30px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(10, 10, 20, 0.8);
+    box-shadow:
+            0 0 20px rgba(100, 50, 150, 0.5),
+            inset 0 0 10px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    transition: transform 0.3s ease;
+}
+.auth-container:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Сияющий «ореол» за формой */
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    background: conic-gradient(from 0deg,
+    #ff00c1, #00fff6, #8a2be2, #ff00c1);
+    background-size: 200% 200%;
+    filter: blur(30px);
+    animation: glowRotate 8s linear infinite;
+    z-index: -1;
+    border-radius: inherit;
+}
+@keyframes glowRotate {
+    to { transform: rotate(360deg); }
+}
+
+/* Заголовок с глитч-эффектом */
+.auth-title {
+    margin: 0 0 24px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #e0e0ff;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: titleGlitch 3s infinite;
+}
+@keyframes titleGlitch {
+    0%,100% { text-shadow: none; }
+    10%     { text-shadow: 2px 0 #ff00c1, -2px 0 #00fff6; }
+    20%     { text-shadow: -2px 2px #ff00c1, 2px -2px #00fff6; }
+    30%     { text-shadow: 2px -2px #ff00c1, -2px 2px #00fff6; }
+    40%     { text-shadow: -2px 0 #ff00c1, 2px 0 #00fff6; }
+}
+
+/* Toggle Sign In / Sign Up */
+.auth-toggle {
+    display: flex;
+    margin-bottom: 20px;
+}
+.auth-toggle button {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    color: #bbb;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+}
+.auth-toggle button.active {
+    color: #fff;
+    border-bottom: 2px solid #8a2be2;
+}
+
+/* Ошибка с тряской */
+.error-message {
+    color: #ff3366;
+    margin-bottom: 16px;
+    font-size: 14px;
+    animation: shake 0.4s ease;
+}
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25%,75% { transform: translateX(-4px); }
+    50%     { transform: translateX(4px); }
+}
+
+/* Поля ввода c неоновым подчеркиванием */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.input-group .icon {
+    position: absolute;
+    top: 50%; left: 12px;
+    transform: translateY(-50%);
+    color: #555;
+    transition: color 0.3s;
+}
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #444;
+    color: #eee;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+    border-color: #00fff6;
+    box-shadow: 0 2px 10px rgba(0, 255, 246, 0.5);
+    outline: none;
+}
+.input-group input:focus + .icon,
+.input-group input:focus ~ .icon {
+    color: #00fff6;
+}
+
+/* Кнопка отправки с неоновым градиентом */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff00c1, #00fff6);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 6px;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s, background-position 3s ease;
+    animation: btnGradient 6s ease infinite;
+}
+@keyframes btnGradient {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+}
+.submit-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Ссылка «Забыли пароль» */
+.forgot-btn {
+    margin-top: 12px;
+    background: none;
+    border: none;
+    color: #8a2be2;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.forgot-btn:hover {
+    color: #ff00c1;
+}

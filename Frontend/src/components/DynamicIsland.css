@@ -1,0 +1,123 @@
+/* динамический остров — адаптивный фон и цвет */
+:root {
+    /* светлая тема */
+    --island-bg-rgb: 255, 255, 255;
+    --island-bg-alpha: 0.7;
+    --island-color: #000;
+    --island-border: rgba(0, 0, 0, 0.1);
+
+    /* разрешаем light/dark */
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* тёмная тема */
+        --island-bg-rgb: 0, 0, 0;
+        --island-bg-alpha: 0.5;
+        --island-color: #fff;
+        --island-border: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.dynamic-island {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(var(--island-bg-rgb), var(--island-bg-alpha));
+    color: var(--island-color);
+    border: 1px solid var(--island-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 56px;
+    padding: 8px;
+    transition: width 0.3s, padding 0.3s, background 0.3s, border-color 0.3s;
+    z-index: 10000;
+}
+
+.dynamic-island.expanded {
+    width: auto;
+    padding: 8px 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 16px;
+    margin-right: 20px;
+}
+
+.nav-item {
+    text-decoration: none;
+    font-weight: 500;
+    color: inherit;
+}
+.nav-item:hover,
+.nav-item.active {
+    color: #007bff;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 20px;
+}
+
+.search-input {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 160px;
+}
+
+.search-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+.search-btn:hover {
+    background: #0056b3;
+}
+
+.home-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #28a745;
+    color: #fff;
+    cursor: pointer;
+}
+.home-btn:hover {
+    background: #1e7e34;
+}
+
+.icons {
+    display: flex;
+    gap: 12px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: cover;
+    cursor: pointer;
+}
+.home-icon {
+    background-image: url('https://images.vexels.com/media/users/3/223204/isolated/preview/a603755020e70576e1f4a08b012835d4-home-icon-flat-design.png');
+}
+.search-icon {
+    background-image: url('https://purepng.com/public/uploads/medium/search-icon-sl7.png');
+}
+.cesium-viewer-toolbar{
+    display: none !important;
+}
