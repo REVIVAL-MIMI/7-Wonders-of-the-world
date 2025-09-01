@@ -26,14 +26,7 @@
 - [Axios](https://axios-http.com/) – запросы к API
 - [CesiumJS](https://cesium.com/)
 - [React Router](https://reactrouter.com/) – маршрутизация
-
-### Backend:
-- [Spring Boot](https://spring.io/projects/spring-boot)
-- [Spring Security](https://spring.io/projects/spring-security) + JWT
-- [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
-- [PostgreSQL](https://www.postgresql.org/) + [PostGIS](https://postgis.net/) – гео-запросы
-- [Cloudinary](https://cloudinary.com/) SDK – загрузка и хранение фото
-
+  
 ---
 
 ## 🧪 Запуск проекта
